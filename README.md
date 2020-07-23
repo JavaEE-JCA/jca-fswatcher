@@ -2,15 +2,15 @@
 
 Custom JavaEE 8 jca resource adapter for watching changes on file system .
 
-####Simple build and run :
-**TomEE 8**   
+####Simple build and run :     
+**TomEE 8**     
 `mvn clean compile install ; (cd ear-module/ ; mvn tomee:run)`
 
-**Liberty/OpenLiberty**   
+**Liberty/OpenLiberty**     
 `mvn clean compile install ; (cd ear-module/ ; mvn liberty:run)`
 
 
-***Example Implementation :*** 
+***Example Implementation :***      
 ```java
 @MessageDriven(activationConfig = {@ActivationConfigProperty(propertyName = "dir", propertyValue = "/path/of/directory/")})
 public class FileSystemMDB implements FSWatcher {
