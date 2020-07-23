@@ -2,7 +2,7 @@
 
 Custom JavaEE 8 jca resource adapter for watching changes on file system .
 
-####Simple build and run :     
+###Simple build and run :     
 **TomEE 8**     
 `mvn clean compile install ; (cd ear-module/ ; mvn tomee:run)`
 
