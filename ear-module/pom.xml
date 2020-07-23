@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>ir.moke.jca</groupId>
+        <artifactId>jca-fswatcher</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>ear-module</artifactId>
+    <packaging>ear</packaging>
+    <name>Moke :: JCA :: EAR</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>api-module</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>rar-module</artifactId>
+            <version>${project.version}</version>
+            <type>rar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>web-module</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>jca-application</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <defaultLibBundleDir>/ear-module-1.0-SNAPSHOT</defaultLibBundleDir>
+                    <modules>
+                        <jarModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>api-module</artifactId>
+                            <includeInApplicationXml>true</includeInApplicationXml>
+                        </jarModule>
+                        <rarModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>rar-module</artifactId>
+                            <uri>/jca-resourceAdapter.rar</uri>
+                        </rarModule>
+                        <webModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>web-module</artifactId>
+                            <uri>/jca-web.war</uri>
+                            <!-- Set custom context root -->
+                            <contextRoot>/</contextRoot>
+                        </webModule>
+                    </modules>
+                </configuration>
+            </plugin>
+
+
+            <!-- Enable liberty plugin -->
+            <plugin>
+                <groupId>io.openliberty.tools</groupId>
+                <artifactId>liberty-maven-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <jvmOptions>
+                        <param>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=7777</param>
+                    </jvmOptions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

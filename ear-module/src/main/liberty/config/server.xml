@@ -12,6 +12,21 @@
         <feature>localConnector-1.0</feature>
     </featureManager>
 
+    <activationSpec id="jca-application/jca-web/FileSystemMDB">
+        <properties.jca-application.jca-resourceAdapter/>
+    </activationSpec>
+
+    <activationSpec id="jca-application/jca-web/FileSystemMDBSecond">
+        <properties.jca-application.jca-resourceAdapter/>
+    </activationSpec>
+
+<!--
+    <webApplication id="fsWatcher"
+                    location="/home/mah454/Programming/Java/JCA/jca-fswatcher/target/jca-fswatcher.war"
+                    name="fsWatcher"/>
+-->
+
+
     <basicRegistry id="basic" realm="BasicRealm"/>
     <httpSession securityIntegrationEnabled="false"/>
     <httpEndpoint id="defaultHttpEndpoint" httpPort="8080" httpsPort="9443">

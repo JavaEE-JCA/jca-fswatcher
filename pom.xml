@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>ir.moke.jca</groupId>
     <artifactId>jca-fswatcher</artifactId>
     <version>1.0-SNAPSHOT</version>
     <organization>
@@ -12,18 +12,28 @@
         <url>http://www.moke.ir</url>
     </organization>
 
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
+    <modules>
+        <module>web-module</module>
+        <module>ear-module</module>
+        <module>rar-module</module>
+        <module>api-module</module>
+        <module>impl-module</module>
+    </modules>
 
-    <dependencies>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>8.0.1</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>8.0.1</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
+        <!--<finalName>fs-watcher</finalName>-->
         <!-- Java compiler version -->
         <plugins>
             <plugin>
@@ -48,13 +58,6 @@
                         </manifest>
                     </archive>
                 </configuration>
-            </plugin>
-
-            <!-- Enable liberty plugin -->
-            <plugin>
-                <groupId>io.openliberty.tools</groupId>
-                <artifactId>liberty-maven</artifactId>
-                <version>3.2</version>
             </plugin>
         </plugins>
     </build>
