@@ -50,7 +50,7 @@ public class FileSystemWatcherResourceAdapter implements ResourceAdapter {
         try {
             WatchKey wk = fileSystem.getPath(fsWatcherActivationSpec.getDir()).register(watchService, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY);
             listeners.put(wk, messageEndpointFactory);
-            messageEndpointBeanMap.put(messageEndpointFactory, messageEndpointFactory.getEndpointClass());
+            messageEndpointBeanMap.put(messageEndpointFactory, fsWatcherActivationSpec.getBeanClass() != null ? fsWatcherActivationSpec.getBeanClass() : messageEndpointFactory.getEndpointClass());
         } catch (IOException e) {
             e.printStackTrace();
         }

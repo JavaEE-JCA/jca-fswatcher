@@ -19,6 +19,7 @@ public class FileSystemWatcherActivationSpec implements ActivationSpec {
 
     private ResourceAdapter resourceAdapter;
     private String dir;
+    private Class<?> beanClass ;
 
     @Override
     public void validate() throws InvalidPropertyException {
@@ -41,5 +42,13 @@ public class FileSystemWatcherActivationSpec implements ActivationSpec {
 
     public void setDir(String dir) {
         this.dir = dir;
+    }
+
+    public Class<?> getBeanClass() {
+        return beanClass;
+    }
+
+    public void setBeanClass(Class<?> beanClass) {
+        this.beanClass = beanClass;
     }
 }
