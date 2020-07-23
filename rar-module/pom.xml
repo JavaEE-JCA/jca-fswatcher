@@ -23,7 +23,7 @@
     </dependencies>
 
     <build>
-        <finalName>jca-resourceAdapter.rar</finalName>
+        <finalName>jca-resourceAdapter</finalName>
     </build>
 
 </project>

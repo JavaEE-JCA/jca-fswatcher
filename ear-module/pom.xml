@@ -46,7 +46,9 @@
                 <artifactId>maven-ear-plugin</artifactId>
                 <version>3.0.2</version>
                 <configuration>
-                    <defaultLibBundleDir>/ear-module-1.0-SNAPSHOT</defaultLibBundleDir>
+                    <includeLibInApplicationXml>true</includeLibInApplicationXml>
+                    <generateApplicationXml>true</generateApplicationXml>
+                    <defaultLibBundleDir>/lib</defaultLibBundleDir>
                     <modules>
                         <jarModule>
                             <groupId>${project.groupId}</groupId>
@@ -89,7 +91,7 @@
                 <version>8.0.3</version>
                 <configuration>
                     <tomeeClassifier>plus</tomeeClassifier>
-<!--                    <args>-Xmx512m -XX:PermSize=256m</args>-->
+<!--                    <args>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=7777</args>-->
                 </configuration>
             </plugin>
         </plugins>
